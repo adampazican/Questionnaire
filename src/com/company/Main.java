@@ -54,8 +54,15 @@ public class Main {
                 "realAnswer VARCHAR(255)," +
                 "PRIMARY KEY(id)" +
                 ");";
+
+        String categoriesTable = "CREATE TABLE categories(" +
+                "id INT NOT NULL AUTO_INCREMENT," +
+                "name VARCHAR(255)," +
+                "PRIMARY KEY(id);";
+
         try {
             statement.executeQuery(questionsTable);
+            statement.executeQuery(categoriesTable);
         }
         catch (SQLException e){
             e.printStackTrace();

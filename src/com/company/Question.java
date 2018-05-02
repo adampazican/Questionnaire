@@ -3,15 +3,15 @@ package com.company;
 public class Question {
     private String id;
     private String title;
-    private String category;
+    private int categoryId;
     private String answer1;
     private String answer2;
     private String answer3;
     private String realAnswer;
 
-    public Question(String title, String category, String answer1, String answer2, String answer3, String realAnswer){
+    public Question(String title, int categoryId, String answer1, String answer2, String answer3, String realAnswer){
         this.title = title;
-        this.category = category;
+        this.categoryId = categoryId;
         this.answer1 = answer1;
         this.answer2 = answer2;
         this.answer3 = answer3;
@@ -34,12 +34,12 @@ public class Question {
         this.title = title;
     }
 
-    public String getCategory() {
-        return category;
+    public int getCategoryId() {
+        return categoryId;
     }
 
-    public void setCategory(String category) {
-        this.category = category;
+    public void setCategoryId(int categoryId) {
+        this.categoryId = categoryId;
     }
 
     public String getAnswer1() {
