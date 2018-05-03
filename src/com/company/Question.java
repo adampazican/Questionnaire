@@ -1,24 +1,23 @@
 package com.company;
 
-public class Question {
+public class Question extends ResponseObject{
     private String id;
     private String title;
-    private int categoryId;
+    private String categoryName;
     private String answer1;
     private String answer2;
     private String answer3;
     private String realAnswer;
 
-    public Question(String title, int categoryId, String answer1, String answer2, String answer3, String realAnswer){
+    public Question(String title, String categoryName, String answer1, String answer2, String answer3, String realAnswer){
+        super(200, null);
         this.title = title;
-        this.categoryId = categoryId;
+        this.categoryName = categoryName;
         this.answer1 = answer1;
         this.answer2 = answer2;
         this.answer3 = answer3;
         this.realAnswer = realAnswer;
     }
-
-    public Question(){}
 
     public String getId() { return id; }
 
@@ -34,12 +33,12 @@ public class Question {
         this.title = title;
     }
 
-    public int getCategoryId() {
-        return categoryId;
+    public String getCategoryName() {
+        return categoryName;
     }
 
-    public void setCategoryId(int categoryId) {
-        this.categoryId = categoryId;
+    public void setCategoryName(String categoryName) {
+        this.categoryName = categoryName;
     }
 
     public String getAnswer1() {

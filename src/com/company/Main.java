@@ -1,6 +1,5 @@
 package com.company;
 
-import javax.swing.plaf.nimbus.State;
 import java.sql.*;
 
 public class Main {
@@ -11,13 +10,12 @@ public class Main {
     private static final String PASS = "root";
 
     public static void main(String[] args) {
-        Connection connection = null;
+        Connection connection;
         Statement statement = null;
         try{
             connection = DriverManager.getConnection(Main.DB_URL, Main.USER, Main.PASS);
             statement = connection.createStatement();
-            ResultSet rs = statement.executeQuery("select 1 from questions limit 1;");
-            //statement.executeUpdate(sql);
+            ResultSet rs = statement.executeQuery("SELECT 1 FROM questions LIMIT 1;");
             System.out.println("connected");
         }
         catch (SQLSyntaxErrorException e){
@@ -58,7 +56,8 @@ public class Main {
         String categoriesTable = "CREATE TABLE categories(" +
                 "id INT NOT NULL AUTO_INCREMENT," +
                 "name VARCHAR(255)," +
-                "PRIMARY KEY(id);";
+                "PRIMARY KEY(id)" +
+                ");";
 
         try {
             statement.executeQuery(questionsTable);
