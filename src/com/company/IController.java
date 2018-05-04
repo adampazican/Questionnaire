@@ -4,7 +4,7 @@ import spark.Request;
 
 import java.util.List;
 
-public interface IHandler {
+public interface IController {
     List<ResponseObject> getAll();
     ResponseObject get(String id);
     ResponseObject update(String id, Request req);

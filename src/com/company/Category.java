@@ -1,11 +1,11 @@
 package com.company;
 
-public class Category {
+public class Category extends ResponseObject{
     private String id;
     private String name;
 
-    public Category(String id, String name){
-        this.id = id;
+    public Category(String name){
+        super(200, null);
         this.name = name;
     }
 

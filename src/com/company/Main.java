@@ -38,7 +38,8 @@ public class Main {
 
 
 
-        new QuestionController(new QuestionHandler(statement));
+        new QuestionRouter(new QuestionController(statement));
+        new CategoryRouter(new CategoryController(statement));
     }
 
     public static void setup(Statement statement){
