@@ -1,6 +1,7 @@
 package com.company;
 
 import spark.Request;
+import spark.Response;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -16,7 +17,7 @@ public class CategoryController implements IController {
     }
 
     @Override
-    public List<ResponseObject> getAll() {
+    public List<ResponseObject> getAll(Request req, Response res) {
         String sql = "SELECT * from categories;";
         List<ResponseObject> categories = new ArrayList<>();
 
@@ -35,7 +36,8 @@ public class CategoryController implements IController {
     }
 
     @Override
-    public ResponseObject get(String id) {
+    public ResponseObject get(Request req, Response res) {
+        String id = req.params(":id");
         String sql = String.format("SELECT * FROM categories WHERE id=%s", id);
         Category category = null;
 
@@ -54,17 +56,17 @@ public class CategoryController implements IController {
     }
 
     @Override
-    public ResponseObject update(String id, Request req) {
+    public ResponseObject update(Request req, Response res) {
         return null;
     }
 
     @Override
-    public ResponseObject delete(String id) {
+    public ResponseObject delete(Request req, Response res) {
         return null;
     }
 
     @Override
-    public ResponseObject create(String title, String categoryId, String answer1, String answer2, String answer3, String realAnswer) {
+    public ResponseObject create(Request req, Response res) {
         return null;
     }
 }

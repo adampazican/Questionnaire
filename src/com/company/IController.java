@@ -1,13 +1,14 @@
 package com.company;
 
 import spark.Request;
+import spark.Response;
 
 import java.util.List;
 
 public interface IController {
-    List<ResponseObject> getAll();
-    ResponseObject get(String id);
-    ResponseObject update(String id, Request req);
-    ResponseObject delete(String id);
-    ResponseObject create(String title, String categoryId, String answer1, String answer2, String answer3, String realAnswer);
+    List<ResponseObject> getAll(Request req, Response res);
+    ResponseObject get(Request req, Response res);
+    ResponseObject update(Request req, Response res);
+    ResponseObject delete(Request req, Response res);
+    ResponseObject create(Request req, Response res);
 }

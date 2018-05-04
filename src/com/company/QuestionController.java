@@ -1,6 +1,7 @@
 package com.company;
 
 import spark.Request;
+import spark.Response;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -17,7 +18,7 @@ public class QuestionController implements IController {
     }
     //TODO: handler interface (getAll, create, update methods) for question and category handlers
 
-    public List<ResponseObject> getAll(){
+    public List<ResponseObject> getAll(Request req, Response res){
         List<ResponseObject> questions = new ArrayList<>();
         String retrieveQuestions = "SELECT questions.title, questions.answer1, questions.answer2, questions.answer3, questions.realAnswer, categories.name " +
                 "FROM questions " +
@@ -44,7 +45,8 @@ public class QuestionController implements IController {
         }
     }
 
-    public ResponseObject get(String id){
+    public ResponseObject get(Request req, Response res){
+        String id = req.params(":id");
         String retrieveQuestion = String.format("SELECT questions.title, questions.answer1, questions.answer2, questions.answer3, questions.realAnswer, categories.name " +
                 "FROM questions " +
                 "INNER JOIN categories " +
@@ -74,7 +76,14 @@ public class QuestionController implements IController {
         return question == null ? new ResponseObject(404, "Question not found") : question;
     }
 
-    public ResponseObject create(String title, String categoryId, String answer1, String answer2, String answer3, String realAnswer){
+    public ResponseObject create(Request req, Response res){
+        String title = req.headers("title");
+        String categoryId = req.headers("categoryId");
+        String answer1 = req.headers("answer1");
+        String answer2 = req.headers("answer2");
+        String answer3 = req.headers("answer3");
+        String realAnswer = req.headers("realAnswer");
+
         // TODO: check params not null (db?)
         if(!this.categoryExists(categoryId)) {
             System.out.println("jo");
@@ -111,9 +120,12 @@ public class QuestionController implements IController {
         return false;
     }
 
-    public ResponseObject update(String id, Request req){
-        ResponseObject question = this.get(id);
+    public ResponseObject update(Request req, Response res){
+        System.out.println("jo");
+        String id = req.params(":id");
+        ResponseObject question = this.get(req, res);
         List<String> paramList = Arrays.asList("title", "categoryId", "answer1", "answer2", "answer3", "realAnswer");
+
 
         if(!(question instanceof Question)){
             return new ResponseObject(400, "Bad request");
@@ -125,19 +137,22 @@ public class QuestionController implements IController {
                 String sql = String.format("UPDATE questions SET %s='%s' WHERE id=%s;", param, value, id);
                 try {
                     this.statement.executeQuery(sql);
+                    question = this.get(req, res);
                 }
                 catch (SQLException e){
+                    e.printStackTrace();
                     return new ResponseObject(400, "Bad request");
                 }
             }
         }
 
-        return new ResponseObject(404, "Not found");
+        return question;
     }
 
-    public ResponseObject delete(String id){
+    public ResponseObject delete(Request req, Response res){
+        String id = req.params(":id");
         String sql = String.format("DELETE FROM questions WHERE id=%s;", id);
-        ResponseObject question = this.get(id);
+        ResponseObject question = this.get(req, res);
 
         try {
             this.statement.executeQuery(sql);

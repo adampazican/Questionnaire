@@ -10,6 +10,7 @@ public class Main {
     private static final String PASS = "root";
 
     public static void main(String[] args) {
+        //TODO: make generic router (CRUDRouter) with icontroller param, polymorphismus
         Connection connection;
         Statement statement = null;
         try{
