@@ -10,7 +10,7 @@ public class Main {
     private static final String PASS = "root";
 
     public static void main(String[] args) {
-        //TODO: make generic router (CRUDRouter) with icontroller param, polymorphismus
+        //TODO: make config loader class which reads server config (mainly db) from file
         Connection connection;
         Statement statement = null;
         try{
@@ -39,8 +39,8 @@ public class Main {
 
 
 
-        new QuestionRouter(new QuestionController(statement));
-        new CategoryRouter(new CategoryController(statement));
+        new CRUDRouter(new QuestionController(statement), "questions");
+        new CRUDRouter(new CategoryController(statement), "categories");
     }
 
     public static void setup(Statement statement){

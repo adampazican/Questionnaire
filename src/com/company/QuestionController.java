@@ -16,7 +16,6 @@ public class QuestionController implements IController {
     public QuestionController(Statement statement){
         this.statement = statement;
     }
-    //TODO: handler interface (getAll, create, update methods) for question and category handlers
 
     public List<ResponseObject> getAll(Request req, Response res){
         List<ResponseObject> questions = new ArrayList<>();
