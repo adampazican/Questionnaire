@@ -1,5 +1,6 @@
 package com.company;
 
+import com.company.controllers.IController;
 import com.google.gson.Gson;
 
 import static spark.Spark.*;

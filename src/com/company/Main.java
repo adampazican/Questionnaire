@@ -1,5 +1,8 @@
 package com.company;
 
+import com.company.controllers.CategoryController;
+import com.company.controllers.QuestionController;
+
 import java.sql.*;
 
 public class Main {
@@ -11,6 +14,8 @@ public class Main {
 
     public static void main(String[] args) {
         //TODO: make config loader class which reads server config (mainly db) from file
+        //TODO: check params not null (db?)
+        //TODO: Response codes enum
         Connection connection;
         Statement statement = null;
         try{
@@ -37,7 +42,7 @@ public class Main {
 
 
 
-
+        System.out.println(ResponseStatus.NOTFOUND.getResponseMessage());
 
         new CRUDRouter(new QuestionController(statement), "questions");
         new CRUDRouter(new CategoryController(statement), "categories");

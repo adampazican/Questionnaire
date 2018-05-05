@@ -1,5 +1,7 @@
-package com.company;
+package com.company.controllers;
 
+import com.company.ResponseObject;
+import com.company.databaseItems.Question;
 import spark.Request;
 import spark.Response;
 
@@ -17,15 +19,16 @@ public class QuestionController implements IController {
         this.statement = statement;
     }
 
+    @Override
     public List<ResponseObject> getAll(Request req, Response res){
         List<ResponseObject> questions = new ArrayList<>();
-        String retrieveQuestions = "SELECT questions.title, questions.answer1, questions.answer2, questions.answer3, questions.realAnswer, categories.name " +
+        String sql = "SELECT questions.title, questions.answer1, questions.answer2, questions.answer3, questions.realAnswer, categories.name " +
                 "FROM questions " +
                 "INNER JOIN categories " +
                 "ON questions.categoryId = categories.id;";
 
         try{
-            ResultSet rs = this.statement.executeQuery(retrieveQuestions);
+            ResultSet rs = this.statement.executeQuery(sql);
             while(rs.next()){
                 String title = rs.getString("title");
                 String categoryName = rs.getString("name");
@@ -44,9 +47,10 @@ public class QuestionController implements IController {
         }
     }
 
+    @Override
     public ResponseObject get(Request req, Response res){
         String id = req.params(":id");
-        String retrieveQuestion = String.format("SELECT questions.title, questions.answer1, questions.answer2, questions.answer3, questions.realAnswer, categories.name " +
+        String sql = String.format("SELECT questions.title, questions.answer1, questions.answer2, questions.answer3, questions.realAnswer, categories.name " +
                 "FROM questions " +
                 "INNER JOIN categories " +
                 "ON questions.categoryId = categories.id " +
@@ -55,7 +59,7 @@ public class QuestionController implements IController {
         Question question = null;
 
         try {
-            ResultSet rs = this.statement.executeQuery(retrieveQuestion);
+            ResultSet rs = this.statement.executeQuery(sql);
             while(rs.next()){
                 String title = rs.getString("title");
                 String categoryName = rs.getString("name");
@@ -75,6 +79,7 @@ public class QuestionController implements IController {
         return question == null ? new ResponseObject(404, "Question not found") : question;
     }
 
+    @Override
     public ResponseObject create(Request req, Response res){
         String title = req.headers("title");
         String categoryId = req.headers("categoryId");
@@ -83,17 +88,16 @@ public class QuestionController implements IController {
         String answer3 = req.headers("answer3");
         String realAnswer = req.headers("realAnswer");
 
-        // TODO: check params not null (db?)
         if(!this.categoryExists(categoryId)) {
             System.out.println("jo");
-            return new ResponseObject(400, "Category doesn't exist");
+            return new ResponseObject(404, "Category doesn't exist");
         }
 
-        String newQuestion = String.format("INSERT INTO questions (title, categoryId, answer1, answer2, answer3, realAnswer) VALUES" +
+        String sql = String.format("INSERT INTO questions (title, categoryId, answer1, answer2, answer3, realAnswer) VALUES" +
                 "('%s','%s','%s','%s','%s','%s');", title, categoryId, answer1, answer2, answer3, realAnswer);
 
         try {
-            this.statement.executeQuery(newQuestion);
+            this.statement.executeQuery(sql);
 
         }
         catch (SQLException e){
@@ -103,8 +107,8 @@ public class QuestionController implements IController {
         return new Question(title, categoryId, answer1, answer2, answer3, realAnswer);
     }
 
-    public boolean categoryExists(String id){
-        String sql = String.format("select * from categories where id=%s;", id);
+    private boolean categoryExists(String id){
+        String sql = String.format("SELECT * FROM categories WHERE id=%s;", id);
 
         try {
             ResultSet rs = this.statement.executeQuery(sql);
@@ -119,8 +123,8 @@ public class QuestionController implements IController {
         return false;
     }
 
+    @Override
     public ResponseObject update(Request req, Response res){
-        System.out.println("jo");
         String id = req.params(":id");
         ResponseObject question = this.get(req, res);
         List<String> paramList = Arrays.asList("title", "categoryId", "answer1", "answer2", "answer3", "realAnswer");
@@ -148,6 +152,7 @@ public class QuestionController implements IController {
         return question;
     }
 
+    @Override
     public ResponseObject delete(Request req, Response res){
         String id = req.params(":id");
         String sql = String.format("DELETE FROM questions WHERE id=%s;", id);

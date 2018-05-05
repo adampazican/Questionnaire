@@ -1,6 +1,8 @@
-package com.company;
+package com.company.databaseItems;
 
-public class Question extends ResponseObject{
+import com.company.ResponseObject;
+
+public class Question extends ResponseObject {
     private String id;
     private String title;
     private String categoryName;

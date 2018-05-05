@@ -1,5 +1,6 @@
-package com.company;
+package com.company.controllers;
 
+import com.company.ResponseObject;
 import spark.Request;
 import spark.Response;
 
