@@ -1,6 +1,7 @@
 package com.company.controllers;
 
 import com.company.ResponseObject;
+import com.company.ResponseStatus;
 import com.company.databaseItems.Question;
 import spark.Request;
 import spark.Response;
@@ -40,7 +41,7 @@ public class QuestionController implements IController {
             }
         }
         catch (SQLException e){
-            questions.add(new ResponseObject(500, "Internal server error"));
+            questions.add(new ResponseObject(500, ResponseStatus.INTERNALERROR.getResponseMessage()));
         }
         finally {
             return questions;
@@ -72,11 +73,11 @@ public class QuestionController implements IController {
         }
         catch (SQLException e){
             e.printStackTrace();
-            return new ResponseObject(500, "Internal server error");
+            return new ResponseObject(500, ResponseStatus.INTERNALERROR.getResponseMessage());
         }
 
 
-        return question == null ? new ResponseObject(404, "Question not found") : question;
+        return question == null ? new ResponseObject(404, ResponseStatus.NOTFOUND.getResponseMessage()) : question;
     }
 
     @Override
@@ -90,7 +91,7 @@ public class QuestionController implements IController {
 
         if(!this.categoryExists(categoryId)) {
             System.out.println("jo");
-            return new ResponseObject(404, "Category doesn't exist");
+            return new ResponseObject(404, ResponseStatus.NOTFOUND.getResponseMessage());
         }
 
         String sql = String.format("INSERT INTO questions (title, categoryId, answer1, answer2, answer3, realAnswer) VALUES" +
@@ -101,7 +102,7 @@ public class QuestionController implements IController {
 
         }
         catch (SQLException e){
-            e.printStackTrace();
+            return new ResponseObject(400, ResponseStatus.BADREQUEST.getResponseMessage());
         }
 
         return new Question(title, categoryId, answer1, answer2, answer3, realAnswer);
@@ -131,7 +132,7 @@ public class QuestionController implements IController {
 
 
         if(!(question instanceof Question)){
-            return new ResponseObject(400, "Bad request");
+            return new ResponseObject(400, ResponseStatus.BADREQUEST.getResponseMessage());
         }
 
         for(String param : paramList){
@@ -144,7 +145,7 @@ public class QuestionController implements IController {
                 }
                 catch (SQLException e){
                     e.printStackTrace();
-                    return new ResponseObject(400, "Bad request");
+                    return new ResponseObject(400, ResponseStatus.BADREQUEST.getResponseMessage());
                 }
             }
         }
@@ -162,7 +163,7 @@ public class QuestionController implements IController {
             this.statement.executeQuery(sql);
         }
         catch (SQLException e){
-            return new ResponseObject(400, "Bad request");
+            return new ResponseObject(400, ResponseStatus.BADREQUEST.getResponseMessage());
         }
 
 

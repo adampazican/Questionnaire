@@ -1,6 +1,7 @@
 package com.company.controllers;
 
 import com.company.ResponseObject;
+import com.company.ResponseStatus;
 import com.company.databaseItems.Category;
 import spark.Request;
 import spark.Response;
@@ -32,7 +33,7 @@ public class CategoryController implements IController {
             }
         }
         catch (SQLException e){
-            categories.add(new ResponseObject(500, "Internal server error"));
+            categories.add(new ResponseObject(500, ResponseStatus.INTERNALERROR.getResponseMessage()));
         }
 
         return categories;
@@ -52,10 +53,10 @@ public class CategoryController implements IController {
             }
         }
         catch (SQLException e){
-            return new ResponseObject(500, "Internal server error");
+            return new ResponseObject(500, ResponseStatus.INTERNALERROR.getResponseMessage());
         }
 
-        return category == null ? new ResponseObject(404, "Question not found") : category;
+        return category == null ? new ResponseObject(404, ResponseStatus.NOTFOUND.getResponseMessage()) : category;
     }
 
     @Override
@@ -66,7 +67,7 @@ public class CategoryController implements IController {
 
 
         if(!(category instanceof Category)){
-            return new ResponseObject(400, "Bad request");
+            return new ResponseObject(400, ResponseStatus.BADREQUEST.getResponseMessage());
         }
 
         for(String param : paramList){
@@ -78,8 +79,7 @@ public class CategoryController implements IController {
                     category = this.get(req, res);
                 }
                 catch (SQLException e){
-                    e.printStackTrace();
-                    return new ResponseObject(400, "Bad request");
+                    return new ResponseObject(400, ResponseStatus.BADREQUEST.getResponseMessage());
                 }
             }
         }
@@ -97,7 +97,7 @@ public class CategoryController implements IController {
             this.statement.executeQuery(sql);
         }
         catch (SQLException e){
-            return new ResponseObject(400, "Bad request");
+            return new ResponseObject(400, ResponseStatus.BADREQUEST.getResponseMessage());
         }
 
 
@@ -116,7 +116,7 @@ public class CategoryController implements IController {
 
         }
         catch (SQLException e){
-            e.printStackTrace();
+            return new ResponseObject(400, ResponseStatus.BADREQUEST.getResponseMessage());
         }
 
         return new Category(name);

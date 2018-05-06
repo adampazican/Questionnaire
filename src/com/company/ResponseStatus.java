@@ -11,7 +11,7 @@ public enum ResponseStatus {
         this.responseStatus = responseStatus;
     }
 
-    String getResponseMessage(){
+    public String getResponseMessage(){
         switch (this.responseStatus){
             case 400:
                 return "Bad request";

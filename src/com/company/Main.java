@@ -6,20 +6,15 @@ import com.company.controllers.QuestionController;
 import java.sql.*;
 
 public class Main {
-    private static final String JDBC_DRIVER = "org.mariadb.jdbc.Driver";
-    private static final String DB_URL = "jdbc:mariadb://localhost/test";
-
-    private static final String USER = "root";
-    private static final String PASS = "root";
-
     public static void main(String[] args) {
-        //TODO: make config loader class which reads server config (mainly db) from file
         //TODO: check params not null (db?)
         //TODO: Response codes enum
         Connection connection;
         Statement statement = null;
+        ConfigReader cr = new ConfigReader();
+
         try{
-            connection = DriverManager.getConnection(Main.DB_URL, Main.USER, Main.PASS);
+            connection = DriverManager.getConnection(cr.getValue("DB_URL"), cr.getValue("USER"), cr.getValue("PASS"));
             statement = connection.createStatement();
             ResultSet rs = statement.executeQuery("SELECT 1 FROM questions LIMIT 1;");
             System.out.println("connected");
@@ -39,10 +34,6 @@ public class Main {
 
             }
         }*/
-
-
-
-        System.out.println(ResponseStatus.NOTFOUND.getResponseMessage());
 
         new CRUDRouter(new QuestionController(statement), "questions");
         new CRUDRouter(new CategoryController(statement), "categories");
