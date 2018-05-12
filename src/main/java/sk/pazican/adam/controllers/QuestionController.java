@@ -19,6 +19,7 @@ public class QuestionController implements IController {
     public QuestionController(Statement statement){
         this.statement = statement;
     }
+    //TODO: add status codes response.status(cislo);
 
     @Override
     public List<ResponseObject> getAll(Request req, Response res){
@@ -39,8 +40,10 @@ public class QuestionController implements IController {
                 String realAnswer = rs.getString("realAnswer");
                 questions.add(new Question(title, categoryName, answer1, answer2, answer3, realAnswer));
             }
+            res.status(200);
         }
         catch (SQLException e){
+            res.status(500);
             questions.add(new ResponseObject(500, ResponseStatus.INTERNALERROR.getResponseMessage()));
         }
         finally {
@@ -73,11 +76,16 @@ public class QuestionController implements IController {
         }
         catch (SQLException e){
             e.printStackTrace();
+            res.status(500);
             return new ResponseObject(500, ResponseStatus.INTERNALERROR.getResponseMessage());
         }
 
+        if(question == null){
+            res.status(404);
+            return new ResponseObject(404, ResponseStatus.NOTFOUND.getResponseMessage());
+        }
 
-        return question == null ? new ResponseObject(404, ResponseStatus.NOTFOUND.getResponseMessage()) : question;
+        return question;
     }
 
     @Override

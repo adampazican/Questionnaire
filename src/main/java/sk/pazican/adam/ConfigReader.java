@@ -17,7 +17,7 @@ public class ConfigReader {
         ProcessBuilder processBuilder = new ProcessBuilder();
         if(processBuilder.environment().get("PORT") != null){
             port(Integer.parseInt(processBuilder.environment().get("PORT")));
-            this.read("config-PROD.txt");
+            this.read("config.txt");
         }
         else{
             port(4567);
