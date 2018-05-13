@@ -3,8 +3,12 @@ package sk.pazican.adam;
 import sk.pazican.adam.controllers.IController;
 import com.google.gson.Gson;
 
-import static spark.Spark.*;
+import static spark.Spark.before;
 import static spark.Spark.delete;
+import static spark.Spark.path;
+import static spark.Spark.get;
+import static spark.Spark.post;
+import static spark.Spark.put;
 
 public class CRUDRouter {
 

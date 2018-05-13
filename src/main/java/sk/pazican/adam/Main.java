@@ -3,7 +3,12 @@ package sk.pazican.adam;
 import sk.pazican.adam.controllers.CategoryController;
 import sk.pazican.adam.controllers.QuestionController;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.Statement;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.SQLSyntaxErrorException;
 
 public class Main {
     public static void main(String[] args) {
@@ -23,15 +28,7 @@ public class Main {
         catch (SQLException e){
             e.printStackTrace();
         }
-        /*finally {
-            try {
-                if (connection != null) {
-                    connection.close();
-                }
-            } catch (SQLException e) {
 
-            }
-        }*/
 
         new CRUDRouter(new QuestionController(statement), "questions");
         new CRUDRouter(new CategoryController(statement), "categories");

@@ -2,15 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1cd9c519-2055-42f6-8f1a-1b29718489b8" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/junit_junit_4_12.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/org_apache_httpcomponents_httpclient_4_5_5.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/sk/pazican/adam/controllers/TestQuestionController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/StudentTester.iml" beforeDir="false" afterPath="$PROJECT_DIR$/StudentTester.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config-DEV.txt" beforeDir="false" afterPath="$PROJECT_DIR$/config-PROD.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/sk/pazican/adam/CRUDRouter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sk/pazican/adam/CRUDRouter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/sk/pazican/adam/ConfigReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sk/pazican/adam/ConfigReader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/sk/pazican/adam/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sk/pazican/adam/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/sk/pazican/adam/controllers/QuestionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sk/pazican/adam/controllers/QuestionController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/sk/pazican/adam/ConfigReader.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sk/pazican/adam/ConfigReader.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/sk/pazican/adam/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sk/pazican/adam/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/sk/pazican/adam/controllers/TestQuestionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/sk/pazican/adam/controllers/TestQuestionController.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -26,8 +24,8 @@
       <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/sk/pazican/adam/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="9" selection-start-line="9" selection-end-line="9" />
+            <state relative-caret-position="37">
+              <caret line="10" column="40" selection-start-line="10" selection-start-column="40" selection-end-line="10" selection-end-column="40" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -38,32 +36,8 @@
       <file leaf-file-name="QuestionController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/sk/pazican/adam/controllers/QuestionController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="52" lean-forward="true" selection-start-line="52" selection-end-line="52" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CRUDRouter.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/sk/pazican/adam/CRUDRouter.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="13" column="20" selection-start-line="13" selection-start-column="20" selection-end-line="13" selection-end-column="20" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ConfigReader.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/sk/pazican/adam/ConfigReader.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="19" column="29" selection-start-line="19" selection-start-column="29" selection-end-line="19" selection-end-column="29" />
+            <state relative-caret-position="-150">
+              <caret line="142" column="66" selection-start-line="142" selection-start-column="66" selection-end-line="142" selection-end-column="66" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -74,10 +48,12 @@
       <file leaf-file-name="TestQuestionController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/java/sk/pazican/adam/controllers/TestQuestionController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="476">
-              <caret line="36" column="29" selection-start-line="36" selection-start-column="29" selection-end-line="36" selection-end-column="29" />
+            <state relative-caret-position="292">
+              <caret line="120" column="83" selection-start-line="120" selection-start-column="83" selection-end-line="120" selection-end-column="83" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#810#811#0" expanded="true" />
+                <element signature="e#874#875#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -125,8 +101,9 @@
         <option value="$PROJECT_DIR$/config.txt" />
         <option value="$PROJECT_DIR$/config-DEV.txt" />
         <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/sk/pazican/adam/Main.java" />
         <option value="$PROJECT_DIR$/src/main/java/sk/pazican/adam/ConfigReader.java" />
+        <option value="$PROJECT_DIR$/src/main/java/sk/pazican/adam/Main.java" />
+        <option value="$PROJECT_DIR$/src/main/java/sk/pazican/adam/CRUDRouter.java" />
         <option value="$PROJECT_DIR$/src/main/java/sk/pazican/adam/controllers/QuestionController.java" />
         <option value="$PROJECT_DIR$/src/test/java/sk/pazican/adam/controllers/TestQuestionController.java" />
       </list>
@@ -155,8 +132,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -288,21 +265,6 @@
       </option>
       <patterns />
     </configuration>
-    <configuration default="true" type="Application" factoryName="Application">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="" />
-      <envs />
-      <method />
-    </configuration>
     <list>
       <item itemvalue="Application.Main" />
       <item itemvalue="JUnit.TestQuestionController.testGetQuestionWithId1" />
@@ -311,8 +273,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.TestQuestionController" />
-        <item itemvalue="JUnit.TestQuestionController.testGetQuestionWithId1" />
         <item itemvalue="Application.Main" />
+        <item itemvalue="JUnit.TestQuestionController.testGetQuestionWithId1" />
       </list>
     </recent_temporary>
   </component>
@@ -330,34 +292,34 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="TestQuestionController_testGetQuestionWithId1 - 2018.05.12 at 19h 19m 15s.xml">
-      <configuration name="TestQuestionController.testGetQuestionWithId1" configurationId="JUnit" />
+    <history-entry file="TestQuestionController - 2018.05.13 at 16h 36m 41s.xml">
+      <configuration name="TestQuestionController" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TestQuestionController_testGetQuestionWithId1 - 2018.05.12 at 19h 21m 03s.xml">
-      <configuration name="TestQuestionController.testGetQuestionWithId1" configurationId="JUnit" />
+    <history-entry file="TestQuestionController - 2018.05.13 at 16h 36m 59s.xml">
+      <configuration name="TestQuestionController" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TestQuestionController_testGetQuestionWithId1 - 2018.05.12 at 19h 21m 31s.xml">
-      <configuration name="TestQuestionController.testGetQuestionWithId1" configurationId="JUnit" />
+    <history-entry file="TestQuestionController - 2018.05.13 at 16h 42m 33s.xml">
+      <configuration name="TestQuestionController" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TestQuestionController_testGetQuestionWithId1 - 2018.05.12 at 19h 22m 24s.xml">
-      <configuration name="TestQuestionController.testGetQuestionWithId1" configurationId="JUnit" />
+    <history-entry file="TestQuestionController - 2018.05.13 at 16h 43m 05s.xml">
+      <configuration name="TestQuestionController" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TestQuestionController_testGetQuestionWithId1 - 2018.05.12 at 19h 26m 27s.xml">
-      <configuration name="TestQuestionController.testGetQuestionWithId1" configurationId="JUnit" />
+    <history-entry file="TestQuestionController - 2018.05.13 at 16h 43m 08s.xml">
+      <configuration name="TestQuestionController" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TestQuestionController_testGetQuestionWithId1 - 2018.05.12 at 19h 26m 36s.xml">
-      <configuration name="TestQuestionController.testGetQuestionWithId1" configurationId="JUnit" />
+    <history-entry file="TestQuestionController - 2018.05.13 at 16h 43m 26s.xml">
+      <configuration name="TestQuestionController" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TestQuestionController_testGetQuestionWithId1 - 2018.05.12 at 19h 27m 11s.xml">
-      <configuration name="TestQuestionController.testGetQuestionWithId1" configurationId="JUnit" />
+    <history-entry file="TestQuestionController - 2018.05.13 at 16h 43m 29s.xml">
+      <configuration name="TestQuestionController" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TestQuestionController_testGetQuestionWithId1 - 2018.05.12 at 19h 27m 53s.xml">
-      <configuration name="TestQuestionController.testGetQuestionWithId1" configurationId="JUnit" />
+    <history-entry file="TestQuestionController - 2018.05.13 at 16h 47m 08s.xml">
+      <configuration name="TestQuestionController" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TestQuestionController_testGetQuestionWithId1 - 2018.05.12 at 19h 29m 26s.xml">
-      <configuration name="TestQuestionController.testGetQuestionWithId1" configurationId="JUnit" />
+    <history-entry file="TestQuestionController - 2018.05.13 at 16h 50m 27s.xml">
+      <configuration name="TestQuestionController" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TestQuestionController - 2018.05.12 at 19h 29m 46s.xml">
+    <history-entry file="TestQuestionController - 2018.05.13 at 16h 51m 07s.xml">
       <configuration name="TestQuestionController" configurationId="JUnit" />
     </history-entry>
   </component>
@@ -377,13 +339,13 @@
       <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49961028" weight="0.3276414" />
       <window_info anchor="bottom" id="Messages" order="7" weight="0.32713348" />
       <window_info anchor="right" id="Palette&#9;" order="3" />
-      <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.50160086" side_tool="true" visible="true" weight="0.2439825" />
+      <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.50213444" side_tool="true" visible="true" weight="0.2439825" />
       <window_info anchor="right" id="Maven Projects" order="3" weight="0.31800467" />
       <window_info anchor="bottom" id="Version Control" order="9" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49839914" visible="true" weight="0.2439825" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49786553" visible="true" weight="0.2439825" />
       <window_info anchor="bottom" id="Terminal" order="10" weight="0.3296355" />
       <window_info id="Designer" order="2" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20010673" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2022412" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.2497979" />
       <window_info id="Favorites" order="2" side_tool="true" />
@@ -442,9 +404,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
           <caret line="12" column="51" selection-start-line="12" selection-start-column="51" selection-end-line="12" selection-end-column="51" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -460,9 +419,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
           <caret line="11" column="126" selection-start-line="11" selection-start-column="126" selection-end-line="11" selection-end-column="126" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -654,9 +610,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
           <caret line="8" column="17" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -681,7 +634,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config-DEV.txt">
+    <entry file="file://$PROJECT_DIR$/config-PROD.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
           <caret line="3" column="9" selection-start-line="3" selection-start-column="9" selection-end-line="3" selection-end-column="9" />
@@ -698,8 +651,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/sk/pazican/adam/ConfigReader.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="19" column="29" selection-start-line="19" selection-start-column="29" selection-end-line="19" selection-end-column="29" />
+        <state relative-caret-position="323">
+          <caret line="19" column="34" selection-start-line="19" selection-start-column="34" selection-end-line="19" selection-end-column="34" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -708,8 +661,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/sk/pazican/adam/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" selection-start-line="9" selection-end-line="9" />
+        <state relative-caret-position="37">
+          <caret line="10" column="40" selection-start-line="10" selection-start-column="40" selection-end-line="10" selection-end-column="40" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -718,8 +671,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/sk/pazican/adam/CRUDRouter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="20" selection-start-line="13" selection-start-column="20" selection-end-line="13" selection-end-column="20" />
+        <state>
+          <caret column="24" lean-forward="true" selection-start-column="24" selection-end-column="24" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -728,8 +681,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/sk/pazican/adam/controllers/QuestionController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="52" lean-forward="true" selection-start-line="52" selection-end-line="52" />
+        <state relative-caret-position="-150">
+          <caret line="142" column="66" selection-start-line="142" selection-start-column="66" selection-end-line="142" selection-end-column="66" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -738,10 +691,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/sk/pazican/adam/controllers/TestQuestionController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="36" column="29" selection-start-line="36" selection-start-column="29" selection-end-line="36" selection-end-column="29" />
+        <state relative-caret-position="292">
+          <caret line="120" column="83" selection-start-line="120" selection-start-column="83" selection-end-line="120" selection-end-column="83" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#810#811#0" expanded="true" />
+            <element signature="e#874#875#0" expanded="true" />
           </folding>
         </state>
       </provider>

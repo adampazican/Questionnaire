@@ -19,7 +19,6 @@ public class QuestionController implements IController {
     public QuestionController(Statement statement){
         this.statement = statement;
     }
-    //TODO: add status codes response.status(cislo);
 
     @Override
     public List<ResponseObject> getAll(Request req, Response res){
@@ -40,7 +39,6 @@ public class QuestionController implements IController {
                 String realAnswer = rs.getString("realAnswer");
                 questions.add(new Question(title, categoryName, answer1, answer2, answer3, realAnswer));
             }
-            res.status(200);
         }
         catch (SQLException e){
             res.status(500);
@@ -98,8 +96,8 @@ public class QuestionController implements IController {
         String realAnswer = req.headers("realAnswer");
 
         if(!this.categoryExists(categoryId)) {
-            System.out.println("jo");
-            return new ResponseObject(404, ResponseStatus.NOTFOUND.getResponseMessage());
+            res.status(400);
+            return new ResponseObject(400, ResponseStatus.BADREQUEST.getResponseMessage());
         }
 
         String sql = String.format("INSERT INTO questions (title, categoryId, answer1, answer2, answer3, realAnswer) VALUES" +
@@ -110,6 +108,7 @@ public class QuestionController implements IController {
 
         }
         catch (SQLException e){
+            res.status(400);
             return new ResponseObject(400, ResponseStatus.BADREQUEST.getResponseMessage());
         }
 
@@ -140,7 +139,8 @@ public class QuestionController implements IController {
 
 
         if(!(question instanceof Question)){
-            return new ResponseObject(400, ResponseStatus.BADREQUEST.getResponseMessage());
+            res.status(404);
+            return new ResponseObject(404, ResponseStatus.NOTFOUND.getResponseMessage());
         }
 
         for(String param : paramList){
@@ -153,6 +153,7 @@ public class QuestionController implements IController {
                 }
                 catch (SQLException e){
                     e.printStackTrace();
+                    res.status(400);
                     return new ResponseObject(400, ResponseStatus.BADREQUEST.getResponseMessage());
                 }
             }
@@ -171,6 +172,7 @@ public class QuestionController implements IController {
             this.statement.executeQuery(sql);
         }
         catch (SQLException e){
+            res.status(400);
             return new ResponseObject(400, ResponseStatus.BADREQUEST.getResponseMessage());
         }
 
