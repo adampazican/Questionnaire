@@ -5,7 +5,11 @@ import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
 import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.*;
+import org.apache.http.client.methods.HttpUriRequest;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.methods.HttpPut;
+import org.apache.http.client.methods.HttpDelete;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.util.EntityUtils;
 import org.junit.Test;
@@ -15,7 +19,7 @@ import sk.pazican.adam.databaseItems.Question;
 import java.io.IOException;
 
 public class TestQuestionController {
-    private HttpClient client; //TODO: whole test suit: create, get, update, delete question (category)
+    private HttpClient client;
 
     public TestQuestionController(){
         this.client = HttpClientBuilder.create().build();
@@ -97,7 +101,7 @@ public class TestQuestionController {
     }
 
     @Test
-    public void testUpdateQuestionWithId1() throws IOException{
+    public void testUpdateQuestionWithId() throws IOException{
         HttpUriRequest request = new HttpPut("http://localhost:4567/questions/6");
 
         request.setHeader("title", "Rozloha afriky");

@@ -95,7 +95,7 @@ public class QuestionController implements IController {
         String answer3 = req.headers("answer3");
         String realAnswer = req.headers("realAnswer");
 
-        if(!this.categoryExists(categoryId)) {
+        if(!this.categoryExists(categoryId) || title == null || answer1 == null || answer2 == null || answer3 == null || realAnswer == null) {
             res.status(400);
             return new ResponseObject(400, ResponseStatus.BADREQUEST.getResponseMessage());
         }

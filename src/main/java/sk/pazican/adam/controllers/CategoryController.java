@@ -33,6 +33,7 @@ public class CategoryController implements IController {
             }
         }
         catch (SQLException e){
+            res.status(500);
             categories.add(new ResponseObject(500, ResponseStatus.INTERNALERROR.getResponseMessage()));
         }
 
@@ -53,10 +54,16 @@ public class CategoryController implements IController {
             }
         }
         catch (SQLException e){
+            res.status(500);
             return new ResponseObject(500, ResponseStatus.INTERNALERROR.getResponseMessage());
         }
 
-        return category == null ? new ResponseObject(404, ResponseStatus.NOTFOUND.getResponseMessage()) : category;
+        if(category == null){
+            res.status(404);
+            return new ResponseObject(404, ResponseStatus.NOTFOUND.getResponseMessage());
+        }
+
+        return category;
     }
 
     @Override
@@ -67,7 +74,8 @@ public class CategoryController implements IController {
 
 
         if(!(category instanceof Category)){
-            return new ResponseObject(400, ResponseStatus.BADREQUEST.getResponseMessage());
+            res.status(404);
+            return new ResponseObject(404, ResponseStatus.NOTFOUND.getResponseMessage());
         }
 
         for(String param : paramList){
@@ -79,6 +87,7 @@ public class CategoryController implements IController {
                     category = this.get(req, res);
                 }
                 catch (SQLException e){
+                    res.status(400);
                     return new ResponseObject(400, ResponseStatus.BADREQUEST.getResponseMessage());
                 }
             }
@@ -97,6 +106,7 @@ public class CategoryController implements IController {
             this.statement.executeQuery(sql);
         }
         catch (SQLException e){
+            res.status(400);
             return new ResponseObject(400, ResponseStatus.BADREQUEST.getResponseMessage());
         }
 
@@ -108,6 +118,11 @@ public class CategoryController implements IController {
     public ResponseObject create(Request req, Response res) {
         String name = req.headers("name");
 
+        if(name == null){
+            res.status(400);
+            return new ResponseObject(400, ResponseStatus.BADREQUEST.getResponseMessage());
+        }
+
         String sql = String.format("INSERT INTO categories (name) VALUES" +
                 "('%s');", name);
 
@@ -116,6 +131,7 @@ public class CategoryController implements IController {
 
         }
         catch (SQLException e){
+            res.status(400);
             return new ResponseObject(400, ResponseStatus.BADREQUEST.getResponseMessage());
         }
 
