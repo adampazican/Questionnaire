@@ -21,7 +21,7 @@ import java.io.IOException;
 public class TestCategoryController {
     private HttpClient client;
 
-    public TestCategoryController(){
+    public TestCategoryController() {
         this.client = HttpClientBuilder.create().build();
     }
 
@@ -36,7 +36,7 @@ public class TestCategoryController {
     }
 
     @Test
-    public void testTryToCreateNewCategoryWithNullParams() throws IOException{
+    public void testTryToCreateNewCategoryWithNullParams() throws IOException {
         HttpUriRequest request = new HttpPost("http://localhost:4567/categories/");
 
         HttpResponse response = this.client.execute(request);
@@ -44,7 +44,7 @@ public class TestCategoryController {
     }
 
     @Test
-    public void testGetCategoryWithId1() throws IOException{
+    public void testGetCategoryWithId1() throws IOException {
         HttpUriRequest request = new HttpGet("http://localhost:4567/categories/1");
         HttpResponse response = this.client.execute(request);
 
@@ -52,7 +52,7 @@ public class TestCategoryController {
     }
 
     @Test
-    public void testGetCategoryWithId1ReturnsJSONWithName() throws IOException{
+    public void testGetCategoryWithId1ReturnsJSONWithName() throws IOException {
         HttpUriRequest request = new HttpGet("http://localhost:4567/categories/1");
         HttpResponse response = this.client.execute(request);
 
@@ -65,7 +65,7 @@ public class TestCategoryController {
     }
 
     @Test
-    public void testGetCategoryWithNonExistentId() throws IOException{
+    public void testGetCategoryWithNonExistentId() throws IOException {
         HttpUriRequest request = new HttpGet("http://localhost:4567/categories/9999");
         HttpResponse response = this.client.execute(request);
 
@@ -73,7 +73,7 @@ public class TestCategoryController {
     }
 
     @Test
-    public void testGetAllCategories() throws IOException{
+    public void testGetAllCategories() throws IOException {
         HttpUriRequest request = new HttpGet("http://localhost:4567/categories/");
         HttpResponse response = this.client.execute(request);
 
@@ -81,7 +81,7 @@ public class TestCategoryController {
     }
 
     @Test
-    public void testUpdateCategoryWithId() throws IOException{
+    public void testUpdateCategoryWithId() throws IOException {
         HttpUriRequest request = new HttpPut("http://localhost:4567/categories/2");
 
         request.setHeader("name", "Pokrocila Matematika");
@@ -91,7 +91,7 @@ public class TestCategoryController {
     }
 
     @Test
-    public void testUpdateCategoryWithNonExistentId() throws IOException{
+    public void testUpdateCategoryWithNonExistentId() throws IOException {
         HttpUriRequest request = new HttpPut("http://localhost:4567/categories/9999");
 
         request.setHeader("name", "Pokrocila Matematika");
@@ -101,15 +101,15 @@ public class TestCategoryController {
     }
 
     @Test
-    public void testDeleteCategory() throws IOException{
-        HttpUriRequest request = new HttpDelete("http://localhost:4567/categories/13");
+    public void testDeleteCategory() throws IOException {
+        HttpUriRequest request = new HttpDelete("http://localhost:4567/categories/16");
         HttpResponse response = this.client.execute(request);
 
         Assert.assertEquals(HttpStatus.SC_OK, response.getStatusLine().getStatusCode());
     }
 
     @Test
-    public void testDeleteCategoryWithInvalidId() throws IOException{
+    public void testDeleteCategoryWithInvalidId() throws IOException {
         HttpUriRequest request = new HttpDelete("http://localhost:4567/categories/9999");
         HttpResponse response = this.client.execute(request);
 

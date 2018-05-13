@@ -12,20 +12,19 @@ import java.sql.SQLSyntaxErrorException;
 
 public class Main {
     public static void main(String[] args) {
+        //TODO: make config reader use scanner, add documentation comments +  word documentation + uml
         Connection connection;
         Statement statement = null;
         ConfigReader cr = new ConfigReader();
 
-        try{
+        try {
             connection = DriverManager.getConnection(cr.getValue("DB_URL"), cr.getValue("USER"), cr.getValue("PASS"));
             statement = connection.createStatement();
             ResultSet rs = statement.executeQuery("SELECT 1 FROM questions LIMIT 1;");
             System.out.println("connected");
-        }
-        catch (SQLSyntaxErrorException e){
+        } catch (SQLSyntaxErrorException e) {
             Main.setup(statement);
-        }
-        catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
 
@@ -34,7 +33,7 @@ public class Main {
         new CRUDRouter(new CategoryController(statement), "categories");
     }
 
-    public static void setup(Statement statement){
+    public static void setup(Statement statement) {
         String questionsTable = "CREATE TABLE questions(" +
                 "id INT NOT NULL AUTO_INCREMENT," +
                 "title VARCHAR(255) NOT NULL," +
@@ -55,8 +54,7 @@ public class Main {
         try {
             statement.executeQuery(questionsTable);
             statement.executeQuery(categoriesTable);
-        }
-        catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }

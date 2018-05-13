@@ -11,7 +11,7 @@ public class Question extends ResponseObject {
     private String answer3;
     private String realAnswer;
 
-    public Question(String title, String categoryName, String answer1, String answer2, String answer3, String realAnswer){
+    public Question(String title, String categoryName, String answer1, String answer2, String answer3, String realAnswer) {
         super(200, null);
         this.title = title;
         this.categoryName = categoryName;
@@ -21,7 +21,9 @@ public class Question extends ResponseObject {
         this.realAnswer = realAnswer;
     }
 
-    public String getId() { return id; }
+    public String getId() {
+        return id;
+    }
 
     public void setId(String id) {
         this.id = id;

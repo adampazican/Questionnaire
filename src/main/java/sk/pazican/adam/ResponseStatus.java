@@ -7,12 +7,12 @@ public enum ResponseStatus {
     ;
     private int responseStatus;
 
-    ResponseStatus(int responseStatus){
+    ResponseStatus(int responseStatus) {
         this.responseStatus = responseStatus;
     }
 
-    public String getResponseMessage(){
-        switch (this.responseStatus){
+    public String getResponseMessage() {
+        switch (this.responseStatus) {
             case 400:
                 return "Bad request";
             case 404:

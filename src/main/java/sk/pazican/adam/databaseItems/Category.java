@@ -6,7 +6,7 @@ public class Category extends ResponseObject {
     private String id;
     private String name;
 
-    public Category(String name){
+    public Category(String name) {
         super(200, null);
         this.name = name;
     }

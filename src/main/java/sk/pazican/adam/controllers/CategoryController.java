@@ -16,7 +16,7 @@ import java.util.List;
 public class CategoryController implements IController {
     private Statement statement;
 
-    public CategoryController(Statement statement){
+    public CategoryController(Statement statement) {
         this.statement = statement;
     }
 
@@ -27,12 +27,11 @@ public class CategoryController implements IController {
 
         try {
             ResultSet rs = this.statement.executeQuery(sql);
-            while(rs.next()){
+            while (rs.next()) {
                 String name = rs.getString("name");
                 categories.add(new Category(name));
             }
-        }
-        catch (SQLException e){
+        } catch (SQLException e) {
             res.status(500);
             categories.add(new ResponseObject(500, ResponseStatus.INTERNALERROR.getResponseMessage()));
         }
@@ -48,17 +47,16 @@ public class CategoryController implements IController {
 
         try {
             ResultSet rs = this.statement.executeQuery(sql);
-            while(rs.next()){
+            while (rs.next()) {
                 String name = rs.getString("name");
                 category = new Category(name);
             }
-        }
-        catch (SQLException e){
+        } catch (SQLException e) {
             res.status(500);
             return new ResponseObject(500, ResponseStatus.INTERNALERROR.getResponseMessage());
         }
 
-        if(category == null){
+        if (category == null) {
             res.status(404);
             return new ResponseObject(404, ResponseStatus.NOTFOUND.getResponseMessage());
         }
@@ -73,20 +71,19 @@ public class CategoryController implements IController {
         List<String> paramList = Arrays.asList("name");
 
 
-        if(!(category instanceof Category)){
+        if (!(category instanceof Category)) {
             res.status(404);
             return new ResponseObject(404, ResponseStatus.NOTFOUND.getResponseMessage());
         }
 
-        for(String param : paramList){
+        for (String param : paramList) {
             String value = req.headers(param);
-            if(value != null){
+            if (value != null) {
                 String sql = String.format("UPDATE categories SET %s='%s' WHERE id=%s;", param, value, id);
                 try {
                     this.statement.executeQuery(sql);
                     category = this.get(req, res);
-                }
-                catch (SQLException e){
+                } catch (SQLException e) {
                     res.status(400);
                     return new ResponseObject(400, ResponseStatus.BADREQUEST.getResponseMessage());
                 }
@@ -104,8 +101,7 @@ public class CategoryController implements IController {
 
         try {
             this.statement.executeQuery(sql);
-        }
-        catch (SQLException e){
+        } catch (SQLException e) {
             res.status(400);
             return new ResponseObject(400, ResponseStatus.BADREQUEST.getResponseMessage());
         }
@@ -118,7 +114,7 @@ public class CategoryController implements IController {
     public ResponseObject create(Request req, Response res) {
         String name = req.headers("name");
 
-        if(name == null){
+        if (name == null) {
             res.status(400);
             return new ResponseObject(400, ResponseStatus.BADREQUEST.getResponseMessage());
         }
@@ -129,8 +125,7 @@ public class CategoryController implements IController {
         try {
             this.statement.executeQuery(sql);
 
-        }
-        catch (SQLException e){
+        } catch (SQLException e) {
             res.status(400);
             return new ResponseObject(400, ResponseStatus.BADREQUEST.getResponseMessage());
         }

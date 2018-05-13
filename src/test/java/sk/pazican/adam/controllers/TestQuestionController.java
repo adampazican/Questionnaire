@@ -21,7 +21,7 @@ import java.io.IOException;
 public class TestQuestionController {
     private HttpClient client;
 
-    public TestQuestionController(){
+    public TestQuestionController() {
         this.client = HttpClientBuilder.create().build();
     }
 
@@ -41,7 +41,7 @@ public class TestQuestionController {
     }
 
     @Test
-    public void testTryToCreateNewQuestionWithNonValidCategoryId() throws IOException{
+    public void testTryToCreateNewQuestionWithNonValidCategoryId() throws IOException {
         HttpUriRequest request = new HttpPost("http://localhost:4567/questions/");
 
         request.setHeader("title", "Rozloha Slovenska");
@@ -56,7 +56,7 @@ public class TestQuestionController {
     }
 
     @Test
-    public void testTryToCreateNewQuestionWithNullParams() throws IOException{
+    public void testTryToCreateNewQuestionWithNullParams() throws IOException {
         HttpUriRequest request = new HttpPost("http://localhost:4567/questions/");
 
         HttpResponse response = this.client.execute(request);
@@ -72,7 +72,7 @@ public class TestQuestionController {
     }
 
     @Test
-    public void testGetQuestionWithId1ReturnsJSONWithTitle() throws IOException{
+    public void testGetQuestionWithId1ReturnsJSONWithTitle() throws IOException {
         HttpUriRequest request = new HttpGet("http://localhost:4567/questions/1");
         HttpResponse response = this.client.execute(request);
 
@@ -85,7 +85,7 @@ public class TestQuestionController {
     }
 
     @Test
-    public void testGetQuestionWithNonExistentId() throws IOException{
+    public void testGetQuestionWithNonExistentId() throws IOException {
         HttpUriRequest request = new HttpGet("http://localhost:4567/questions/9999");
         HttpResponse response = this.client.execute(request);
 
@@ -93,7 +93,7 @@ public class TestQuestionController {
     }
 
     @Test
-    public void testGetAllQuestions() throws IOException{
+    public void testGetAllQuestions() throws IOException {
         HttpUriRequest request = new HttpGet("http://localhost:4567/questions/");
         HttpResponse response = this.client.execute(request);
 
@@ -101,7 +101,7 @@ public class TestQuestionController {
     }
 
     @Test
-    public void testUpdateQuestionWithId() throws IOException{
+    public void testUpdateQuestionWithId() throws IOException {
         HttpUriRequest request = new HttpPut("http://localhost:4567/questions/6");
 
         request.setHeader("title", "Rozloha afriky");
@@ -111,7 +111,7 @@ public class TestQuestionController {
     }
 
     @Test
-    public void testUpdateQuestionWithInvalidId() throws IOException{
+    public void testUpdateQuestionWithInvalidId() throws IOException {
         HttpUriRequest request = new HttpPut("http://localhost:4567/questions/99999");
 
         request.setHeader("title", "Rozlohaa Slovenska");
@@ -121,15 +121,15 @@ public class TestQuestionController {
     }
 
     @Test
-    public void testDeleteQuestion() throws IOException{
-        HttpUriRequest request = new HttpDelete("http://localhost:4567/questions/21");
+    public void testDeleteQuestion() throws IOException {
+        HttpUriRequest request = new HttpDelete("http://localhost:4567/questions/24");
         HttpResponse response = this.client.execute(request);
 
         Assert.assertEquals(HttpStatus.SC_OK, response.getStatusLine().getStatusCode());
     }
 
     @Test
-    public void testDeleteQuestionWithInvalidId() throws IOException{
+    public void testDeleteQuestionWithInvalidId() throws IOException {
         HttpUriRequest request = new HttpDelete("http://localhost:4567/questions/9999");
         HttpResponse response = this.client.execute(request);
 

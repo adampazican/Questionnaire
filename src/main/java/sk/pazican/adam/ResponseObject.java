@@ -1,10 +1,10 @@
 package sk.pazican.adam;
 
 public class ResponseObject {
-    protected int status;
-    protected String message;
+    private int status;
+    private String message;
 
-    public ResponseObject(int status, String message){
+    public ResponseObject(int status, String message) {
         this.status = status;
         this.message = message;
     }
